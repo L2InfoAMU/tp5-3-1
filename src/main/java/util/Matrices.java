@@ -47,7 +47,7 @@ public class Matrices {
      * @throws IllegalArgumentException if the matrix have rows with different sizes.
      * @param matrix the matrix to be tested.
      */
-    public  static void requiresRectangularMatrix(Object[][] matrix) {
+        public  static void requiresRectangularMatrix(Object[][] matrix) {
         for (int x = 1; x < getRowCount(matrix); x++) {
             if (matrix[x].length != matrix[0].length)
                 throw new IllegalArgumentException("The matrix must be rectangular.");
