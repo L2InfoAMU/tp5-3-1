@@ -5,3 +5,4 @@ public class NotSupportedException extends RuntimeException {
         super(message);
     }
 }
+
