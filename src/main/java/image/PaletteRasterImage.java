@@ -5,21 +5,26 @@ import javafx.scene.paint.Color;
 import java.util.List;
 
 public class PaletteRasterImage implements Image {
-    private List<Color>
 
-    PaletteRasterImage(Color color, int width, int height){
-
-    }
+    public int width;
+    public int height;
+    public List<Color> palette;
+    public int[][] indexesOfColors;
 
     public BruteRasterImage(Color color, int width, int height){
         this.width = width;
         this.height = height;
         createRepresentation();
+        palette.add(color);
         for(int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
-                pixels[j][i] = color;
+                indexesOfColors[j][i] = palette.indexOf(color);
             }
         }
+    }
+
+    public void createRepresentation(){
+        indexesOfColors = new int[width][height];
     }
     @Override
     public Color getPixelColor(int x, int y) {
