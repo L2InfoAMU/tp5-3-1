@@ -4,21 +4,46 @@ import javafx.scene.paint.Color;
 
 import java.util.List;
 
+import static util.Matrices.*;
+
 public class PaletteRasterImage implements Image {
-    private List<Color> palette;
+
     public int width;
     public int height;
-    public int[][] indexesOfColor;
+    public List<Color> palette;
+    public int[][] indexesOfColors;
 
-    public BruteRasterImage(Color color, int width, int height){
+    public PaletteRasterImage(Color color, int width, int height){
         this.width = width;
         this.height = height;
         createRepresentation();
+        palette.add(color);
         for(int i = 0; i < width; i++) {
             for (int j = 0; j < height; j++) {
-                pixels[j][i] = color;
+                indexesOfColors[j][i] = palette.indexOf(color);
             }
         }
+    }
+
+    public PaletteRasterImage(Color[][] pixel){
+        requiresNonNull(pixel);
+        requiresNonZeroDimensions(pixel);
+        requiresRectangularMatrix(pixel);
+        this.width = getRowCount(pixel);
+        this.height = getColumnCount(pixel);
+        createRepresentation();
+        for(int i = 0; i < this.width; i++){
+            for(int j = 0; j < this.height; j++){
+                if(!palette.contains(pixel[j][i])){
+                    palette.add(pixel[j][i]);
+                }
+                indexesOfColors[j][i] = palette.indexOf(pixel[j][i]);
+            }
+        }
+    }
+    
+    public void createRepresentation(){
+        indexesOfColors = new int[width][height];
     }
     @Override
     public Color getPixelColor(int x, int y) {
@@ -35,29 +60,3 @@ public class PaletteRasterImage implements Image {
         return 0;
     }
 }
-
-    @Override
-    public void setPixelsColor(Color[][] pixels){
-        for (int i = 0;i < width;i++) {
-            for (int j = 0; j < height; j++) {
-                indexesOfColor[j][i] = palette.indexOf(pixels[j][i]);
-            }
-        }
-    }
-
-    @Override
-    private void setPixelsColor(Color color){
-
-    }
-
-    @Override
-    protected void setWidth(int width){
-
-    }
-
-    @Override
-    protected void setHeight(int height){
-
-    }
-
-
