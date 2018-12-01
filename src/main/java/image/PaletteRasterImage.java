@@ -45,6 +45,7 @@ public class PaletteRasterImage implements Image {
     public void createRepresentation(){
         indexesOfColors = new int[width][height];
     }
+
     @Override
     public Color getPixelColor(int x, int y) {
         return palette.get(indexesOfColors[x][y]);
