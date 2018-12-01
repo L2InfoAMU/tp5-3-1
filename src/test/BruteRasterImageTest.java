@@ -20,9 +20,12 @@ public class BruteRasterImageTest {
     private final BruteRasterImage blueSquare = new BruteRasterImage(Color.BLUE,200,200);
     private final BruteRasterImage redRectangle = new BruteRasterImage(Color.RED,400,200);
     private final BruteRasterImage blueRectangle = new BruteRasterImage(Color.BLUE, 400,200);
+    private final BruteRasterImage emptyImage = new BruteRasterImage(Color.TRANSPARENT,200,200);
 
     private final Color[][] redSquareMatrix = new Color[200][200];
     private final Color[][] BlueRedSquareMatrix = new Color[200][200];
+    private final Color[][] BlueRedRectangleMatrix = new Color[400][200];
+    private final Color[][] emptyMatrix = new Color[200][200];
 
 
 
@@ -40,6 +43,7 @@ public class BruteRasterImageTest {
 
     @Test
     void testSecondConstructor(){
+        // Testing constructor with a square matrix
         for(int i = 0; i < 200; i++){                               // Initializing BlueRedSquareMatrix blue part
             for(int j = 0; j < 100; j++){                           // pixels (i,j) where i = [0;200[ j = [0;100[ are blue
                 BlueRedSquareMatrix[i][j] = Color.BLUE;
@@ -54,6 +58,37 @@ public class BruteRasterImageTest {
         assertEquals(getRowCount(BlueRedSquareMatrix),getRowCount(BlueRedSquare.pixels));                // Testing height initialization
         assertEquals(getColumnCount(BlueRedSquareMatrix),getColumnCount(BlueRedSquare.pixels));             // Testing width initialization
         assertEquals(Color.BLUE,BlueRedSquare.pixels[0][0]);        // Testing if pixel (0,0) from BlueRedSquare image is blue
-        assertEquals(Color.RED,BlueRedSquare.pixels[0][100]);        // Testing if pixel (0,100) from BlueRedSquare image is red
+        assertEquals(Color.RED,BlueRedSquare.pixels[0][100]);       // Testing if pixel (0,100) from BlueRedSquare image is red
+
+        // Testing constructor with a rectangle matrix
+        for(int i = 0; i < 400; i++){                               // Initializing BlueRedRectangleMatrix blue part
+            for(int j = 0; j < 100; j++){                            // pixels (i,j) where i = [0;400[ j = [0;100[ are blue
+                BlueRedRectangleMatrix[i][j] = Color.BLUE;
+            }
+        }
+        for(int i = 0; i < 400; i++){                               // Initializing BlueRedRectangleMatrix red part
+            for(int j = 100; j < 200; j++){                         // pixels (i,j) where i = [0;400[ j = [100;200[ are red
+                BlueRedRectangleMatrix[i][j] = Color.RED;
+            }
+        }
+        BruteRasterImage BlueRedRectangle =  new BruteRasterImage(BlueRedRectangleMatrix); // New BruteRasterImage based on BlueRedSquareMatrix
+        assertEquals(getRowCount(BlueRedRectangleMatrix),getRowCount(BlueRedRectangle.pixels));                // Testing height initialization
+        assertEquals(getColumnCount(BlueRedRectangleMatrix),getColumnCount(BlueRedRectangle.pixels));             // Testing width initialization
+        assertEquals(Color.BLUE,BlueRedRectangle.pixels[0][0]);        // Testing if pixel (0,0) from BlueRedSquare image is blue
+        assertEquals(Color.RED,BlueRedRectangle.pixels[0][100]);       // Testing if pixel (0,100) from BlueRedSquare image is red
+    }
+
+    @Test
+    void testCreateRepresentation(){
+        assertEquals(400,getRowCount(redRectangle.pixels));
+        assertEquals(200,getColumnCount(redSquare.pixels));
+    }
+
+    @Test
+    void testSetPixelColor(){
+        emptyImage.setPixelColor(Color.RED,0,0);       // Set pixel (0,0) of emptyImage to RED
+        assertEquals(Color.RED,emptyImage.pixels[0][0]);
+        emptyImage.setPixelColor(Color.BLUE,30,10);    // Set pixel (30,10) of emptyImage to BLUE
+        assertEquals(Color.BLUE,emptyImage.pixels[30][10]);
     }
 }
