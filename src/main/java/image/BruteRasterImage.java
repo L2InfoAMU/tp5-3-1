@@ -14,7 +14,9 @@ public class BruteRasterImage implements Image{
     public BruteRasterImage(Color color, int width, int height){
         setWidth(width);
         setHeight(height);
+
         createRepresentation();
+
         setPixelsColor(color);
         /*for(int i = 0; i < width; i++) {              // Method without using setPixelsColor
             for (int j = 0; j < height; j++) {
@@ -27,9 +29,12 @@ public class BruteRasterImage implements Image{
         requiresNonNull(colors);
         requiresNonZeroDimensions(colors);
         requiresRectangularMatrix(colors);
+
         setWidth(getRowCount(colors));
         setHeight(getColumnCount(colors));
+
         createRepresentation();
+
         setPixelsColor(colors);
         /*for(int i = 0; i < this.width; i++){          // Method without using setPixelsColor
             for(int j = 0; j < this.height; j++){

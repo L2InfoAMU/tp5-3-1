@@ -27,10 +27,10 @@ public class Display implements Initializable {
 
         // TODO : rajouter la création d'une fabrique d'image pour initialiser imageFactory
         imageFactory = new RasterFlagFactory(900, 600,
-                Color.BLUE, Color.WHITE, Color.RED, viewer.RasterImageType.BRUTE);  // DRAPEAU FRANÇAIS
+               Color.BLUE, Color.WHITE, Color.RED, viewer.RasterImageType.PALETTE);  // DRAPEAU FRANÇAIS
 
         //imageFactory = new RasterUniformImageFactory(200,
-               // 200, Color.RED, viewer.RasterImageType.BRUTE); //CARRÉ ROUGE
+        //        200, Color.RED, viewer.RasterImageType.PALETTE); //CARRÉ ROUGE
 
         //imageFactory = new RasterUniformImageFactory(400,
         // 200, Color.RED, viewer.RasterImageType.BRUTE); //RECTANGLE ROUGE

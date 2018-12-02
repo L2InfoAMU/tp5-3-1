@@ -2,6 +2,7 @@ package image;
 
 import javafx.scene.paint.Color;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static util.Matrices.*;
@@ -10,13 +11,15 @@ public class PaletteRasterImage implements Image {
 
     public int width;
     public int height;
-    public List<Color> palette;
+    public List<Color> palette = new ArrayList<>();
     public int[][] indexesOfColors;
 
     public PaletteRasterImage(Color color, int width, int height){
         setWidth(width);
         setHeight(height);
+
         createRepresentation();
+
         setPixelsColor(color);
     }
 
@@ -24,9 +27,12 @@ public class PaletteRasterImage implements Image {
         requiresNonNull(pixel);
         requiresNonZeroDimensions(pixel);
         requiresRectangularMatrix(pixel);
+
         setWidth(getRowCount(pixel));
         setHeight(getColumnCount(pixel));
+
         createRepresentation();
+
         setPixelsColor(pixel);
     }
     
@@ -46,6 +52,7 @@ public class PaletteRasterImage implements Image {
     }
 
     public void setPixelsColor(Color[][] pixels){
+        requiresNonNull(pixels);
         for(int i = 0; i < getRowCount(pixels); i++){
             for(int j = 0; j < getColumnCount(pixels); j++){
                 setPixelColor(pixels[i][j],i,j);
