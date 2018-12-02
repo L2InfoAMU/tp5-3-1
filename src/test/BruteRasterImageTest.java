@@ -17,17 +17,11 @@ import static util.Matrices.getRowCount;
 
 public class BruteRasterImageTest {
     private final BruteRasterImage redSquare = new BruteRasterImage(Color.RED,200,200);
-    private final BruteRasterImage blueSquare = new BruteRasterImage(Color.BLUE,200,200);
     private final BruteRasterImage redRectangle = new BruteRasterImage(Color.RED,400,200);
-    private final BruteRasterImage blueRectangle = new BruteRasterImage(Color.BLUE, 400,200);
-    private final BruteRasterImage emptyImage = new BruteRasterImage(Color.TRANSPARENT,200,200);
 
     private final Color[][] redSquareMatrix = new Color[200][200];
     private final Color[][] BlueRedSquareMatrix = new Color[200][200];
     private final Color[][] BlueRedRectangleMatrix = new Color[400][200];
-    private final Color[][] emptyMatrix = new Color[200][200];
-
-
 
     @Test
     void testFirstConstructor(){                                    // This also test setPixelsColor(Color color)
