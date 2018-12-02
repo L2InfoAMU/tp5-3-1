@@ -15,11 +15,12 @@ public class BruteRasterImage implements Image{
         setWidth(width);
         setHeight(height);
         createRepresentation();
-        for(int i = 0; i < width; i++) {
+        setPixelsColor(color);
+        /*for(int i = 0; i < width; i++) {              // Method without using setPixelsColor
             for (int j = 0; j < height; j++) {
                 setPixelColor(color,i,j);
             }
-        }
+        }*/
     }
 
     public BruteRasterImage(Color[][] colors){

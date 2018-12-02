@@ -30,7 +30,7 @@ public class BruteRasterImageTest {
 
 
     @Test
-    void testFirstConstructor(){
+    void testFirstConstructor(){                                    // This also test setPixelsColor(Color color)
         for(int i = 0; i < 200; i++){                               // Initializing redSquareMatrix
             for(int j = 0; j < 200; j++) {
                 redSquareMatrix[i][j] = Color.RED;
@@ -42,7 +42,7 @@ public class BruteRasterImageTest {
     }
 
     @Test
-    void testSecondConstructor(){
+    void testSecondConstructor(){                                   // This also test setPixelsColor(Color[][] pixels)
         // Testing constructor with a square matrix
         for(int i = 0; i < 200; i++){                               // Initializing BlueRedSquareMatrix blue part
             for(int j = 0; j < 100; j++){                           // pixels (i,j) where i = [0;200[ j = [0;100[ are blue
@@ -84,11 +84,5 @@ public class BruteRasterImageTest {
         assertEquals(200,getColumnCount(redSquare.pixels));
     }
 
-    @Test
-    void testSetPixelColor(){
-        emptyImage.setPixelColor(Color.RED,0,0);       // Set pixel (0,0) of emptyImage to RED
-        assertEquals(Color.RED,emptyImage.pixels[0][0]);
-        emptyImage.setPixelColor(Color.BLUE,30,10);    // Set pixel (30,10) of emptyImage to BLUE
-        assertEquals(Color.BLUE,emptyImage.pixels[30][10]);
-    }
+
 }
