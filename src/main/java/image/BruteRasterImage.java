@@ -5,11 +5,12 @@ import javafx.scene.paint.Color;
 
 import static util.Matrices.*;
 
-public class BruteRasterImage implements Image{
+public class BruteRasterImage extends RasterImage implements Image{
 
     public Color[][] pixels;
     public int width;
     public int height;
+
 
     public BruteRasterImage(Color color, int width, int height){
         setWidth(width);
@@ -71,7 +72,7 @@ public class BruteRasterImage implements Image{
             }
         }
     }
-
+    /**
     public int getWidth() {
         return width;
     }
@@ -86,5 +87,5 @@ public class BruteRasterImage implements Image{
 
     public void setHeight(int height) {
         this.height = height;
-    }
+    }*/
 }

@@ -7,7 +7,7 @@ import java.util.List;
 
 import static util.Matrices.*;
 
-public class PaletteRasterImage implements Image {
+public class PaletteRasterImage extends RasterImage implements Image {
 
     public int width;
     public int height;
