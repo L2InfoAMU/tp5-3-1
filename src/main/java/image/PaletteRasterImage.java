@@ -7,36 +7,21 @@ import java.util.List;
 
 import static util.Matrices.*;
 
-public class PaletteRasterImage implements Image {
+public class PaletteRasterImage extends RasterImage implements Image {
 
-    public int width;
-    public int height;
-    public List<Color> palette = new ArrayList<>();
+    public List<Color> palette;
     public int[][] indexesOfColors;
 
     public PaletteRasterImage(Color color, int width, int height){
-        setWidth(width);
-        setHeight(height);
-
-        createRepresentation();
-
-        setPixelsColor(color);
+        super(color,width,height);
     }
 
     public PaletteRasterImage(Color[][] pixel){
-        requiresNonNull(pixel);
-        requiresNonZeroDimensions(pixel);
-        requiresRectangularMatrix(pixel);
-
-        setWidth(getRowCount(pixel));
-        setHeight(getColumnCount(pixel));
-
-        createRepresentation();
-
-        setPixelsColor(pixel);
+        super(pixel);
     }
-    
+
     public void createRepresentation(){
+        palette = new ArrayList<>();
         indexesOfColors = new int[width][height];
     }
 
@@ -60,7 +45,7 @@ public class PaletteRasterImage implements Image {
         }
     }
 
-    private void setPixelsColor(Color color){
+    public void setPixelsColor(Color color){
         for(int i = 0; i < this.width; i++){
             for(int j = 0; j < this.height; j++){
                 setPixelColor(color,i,j);
@@ -68,19 +53,4 @@ public class PaletteRasterImage implements Image {
         }
     }
 
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    protected void setWidth(int width){
-        this.width = width;
-    }
-
-    protected void setHeight(int height){
-        this.height = height;
-    }
 }
