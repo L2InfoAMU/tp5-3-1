@@ -3,26 +3,23 @@ package image;
 import javafx.scene.paint.Color;
 
 public class Rectangle implements Shape{
-    private int x;
-    private int y;
     private int width;
     private int height;
-    private Color color;
+    private Pixel corner;
 
     public Rectangle(int x, int y, int width, int height, Color color) {
-        this.x = x;
-        this.y = y;
+        this.corner = new Pixel(x,y,color);
         this.width = width;
         this.height = height;
-        this.color = color;
+
     }
 
     public boolean contains(Point point) {
-        return (point.x == this.x && point.y == y);
+        return (corner.x < point.x && point.x <= corner.x + this.width
+                && corner.y < point.y && point.y <= corner.y + this.height);
     }
 
-    @Override
     public Color getColor() {
-        return this.color;
+        return this.corner.getColor();
     }
 }

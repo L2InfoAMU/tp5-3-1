@@ -57,7 +57,7 @@ public class BruteRasterImageTest {
                 BlueRedRectangleMatrix[i][j] = Color.RED;
             }
         }
-        BruteRasterImage BlueRedRectangle =  new BruteRasterImage(BlueRedRectangleMatrix); // New BruteRasterImage based on BlueRedSquareMatrix
+        BruteRasterImage BlueRedRectangle =  new BruteRasterImage(BlueRedRectangleMatrix); // New BruteRasterImage based on BlueRedRectangleMatrix
         assertEquals(getRowCount(BlueRedRectangleMatrix),getRowCount(BlueRedRectangle.pixels));                // Testing height initialization
         assertEquals(getColumnCount(BlueRedRectangleMatrix),getColumnCount(BlueRedRectangle.pixels));             // Testing width initialization
         assertEquals(Color.BLUE,BlueRedRectangle.pixels[0][0]);        // Testing if pixel (0,0) from BlueRedSquare image is blue

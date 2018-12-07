@@ -26,6 +26,7 @@ public class Display implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         // TODO : rajouter la création d'une fabrique d'image pour initialiser imageFactory
+        imageFactory = new LogoLISFactory();
         //imageFactory = new RasterFlagFactory(900, 600,
         //       Color.BLUE, Color.WHITE, Color.RED, viewer.RasterImageType.PALETTE);  // DRAPEAU FRANÇAIS
 
