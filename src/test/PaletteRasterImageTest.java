@@ -25,6 +25,6 @@ public class PaletteRasterImageTest {
         }
         assertEquals(200,redSquare.indexesOfColors.length);         // Testing width initialization
         assertEquals(200,redSquare.indexesOfColors[0].length);      // Testing height initialization
-        assertArrayEq   uals(redSquareMatrix,redSquare.indexesOfColors);        // Testing color initialization
+        assertArrayEquals(redSquareMatrix,redSquare.indexesOfColors);        // Testing color initialization
     }
 }
